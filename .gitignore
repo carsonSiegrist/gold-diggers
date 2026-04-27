@@ -1,3 +1,6 @@
+node_modules/
+
+package-lock.json
 # Dependency directories (never commit these)
 node_modules/
 jspm_packages/
