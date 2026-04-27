@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BLM Gold Prospecting Map</title>
+    
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    
+    <style>
+        body { margin: 0; padding: 0; }
+        /* The map container needs a defined height */
+        #map { height: 100vh; width: 100vw; } 
+    </style>
+</head>
+<body>
+
+    <div id="map"></div>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    
+    <script src="https://unpkg.com/esri-leaflet@3.0.10/dist/esri-leaflet.js"></script>
+
+    <script>
+        // 1. Initialize the map and set its starting coordinates and zoom level
+        // (Coordinates roughly center on the Western US where BLM land is common)
+        const map = L.map('map').setView([40.0, -111.0], 5);
+
+        // 2. Add OpenStreetMap as the base layer
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        // 3. Connect to the BLM ArcGIS Feature Layer
+        // You will need to replace this URL with the exact FeatureServer/0 URL from the BLM dataset.
+        // Example BLM Public Land Survey System (PLSS) URL:
+        const blmLayerUrl = "https://gis.blm.gov/arcgis/rest/services/Cadastral/BLM_Natl_PLSS_CadNSDI/MapServer/1";
+
+        const blmFeatureLayer = L.esri.featureLayer({
+            url: blmLayerUrl,
+            // Styling the shapes
+            style: function (feature) {
+                return { color: '#ffcc00', weight: 2, fillOpacity: 0.4 };
+            }
+        }).addTo(map);
+
+        // 4. Add popups to show expanded details when clicking on a land plot
+blmFeatureLayer.bindPopup(function (layer) {
+    
+    // Print the entire data object to your browser console!
+    console.log("Raw Shape Data:", layer.feature.properties);
+
+    // Provide a temporary popup while we debug
+    return `<b>Data logged to console!</b><br>Press F12 to see it.`;
+});
+    </script>
+</body>
+</html>
