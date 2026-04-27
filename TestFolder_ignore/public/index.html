@@ -45,14 +45,21 @@
         }).addTo(map);
 
         // 4. Add popups to show expanded details when clicking on a land plot
-blmFeatureLayer.bindPopup(function (layer) {
-    
-    // Print the entire data object to your browser console!
-    console.log("Raw Shape Data:", layer.feature.properties);
-
-    // Provide a temporary popup while we debug
-    return `<b>Data logged to console!</b><br>Press F12 to see it.`;
-});
+		blmFeatureLayer.bindPopup(function (layer) {
+			const props = layer.feature.properties;
+		
+			// Grab the exact fields found in your log, with fallbacks just in case
+			const state = props.STATEABBR || 'Unknown';
+			const township = props.TWNSHPLAB || 'Unknown';
+			const meridian = props.PRINMER || 'Unknown';
+			const plssId = props.PLSSID || 'Unknown';
+		
+			// Format the popup HTML
+			return `<b>State:</b> ${state}<br>
+					<b>Township/Range:</b> ${township}<br>
+					<b>Meridian:</b> ${meridian}<br>
+					<b>PLSS ID:</b> ${plssId}`;
+		});
     </script>
 </body>
 </html>
