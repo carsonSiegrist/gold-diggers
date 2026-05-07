@@ -1,65 +1,57 @@
-// Initialize map
-const map = L.map('map').setView([32.3199, -106.7637], 13); // Las Cruces
+const map = L.map("map", { zoomControl: false }).setView([32.3199, -106.7637], 10);
 
-// Tile layer
-L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
   maxZoom: 19,
 }).addTo(map);
 
-// Feature group to store drawn items
-const drawnItems = new L.FeatureGroup();
-map.addLayer(drawnItems);
-
-// Draw control
-const drawControl = new L.Control.Draw({
-  draw: {
-    polygon: true,
-    rectangle: true,
-    circle: false,
-    marker: false,
-    polyline: false,
+const openClaims = L.geoJSON(null, {
+  style: {
+    color: "#16a34a",
+    weight: 2,
+    fillColor: "#16a34a",
+    fillOpacity: 0.2,
   },
-  edit: {
-    featureGroup: drawnItems,
-  }
-});
+  onEachFeature: addClaimPopup,
+}).addTo(map);
 
-map.addControl(drawControl);
+const closedClaims = L.geoJSON(null, {
+  style: {
+    color: "#dc2626",
+    weight: 2,
+    fillColor: "#dc2626",
+    fillOpacity: 0.12,
+  },
+  onEachFeature: addClaimPopup,
+}).addTo(map);
 
-// When user draws something
-map.on(L.Draw.Event.CREATED, function (event) {
-  const layer = event.layer;
+async function loadClaims() {
+  const bounds = map.getBounds();
+  const bbox = [
+    bounds.getWest(),
+    bounds.getSouth(),
+    bounds.getEast(),
+    bounds.getNorth(),
+  ].join(",");
 
-  // Apply blue styling
-  layer.setStyle({
-    color: '#3b82f6',     // Tailwind blue-500
-    fillColor: '#3b82f6',
-    fillOpacity: 0.3,
-  });
+  const [openData, closedData] = await Promise.all([
+    fetch(`/api/claims?status=open&bbox=${bbox}`).then((res) => res.json()),
+    fetch(`/api/claims?status=closed&bbox=${bbox}`).then((res) => res.json()),
+  ]);
 
-  drawnItems.addLayer(layer);
-});
+  openClaims.clearLayers().addData(openData);
+  closedClaims.clearLayers().addData(closedData);
+}
 
-fetch('areas.geojson')
-  .then(res => res.json())
-  .then(data => {
-    const geoLayer = L.geoJSON(data, {
-      style: (feature) => {
-        const color = feature.properties?.color || '#eab308'; // fallback
+function addClaimPopup(feature, layer) {
+  const props = feature.properties || {};
 
-        return {
-          color: color,        // outline
-          weight: 3,
-          fillColor: color,    // fill
-          fillOpacity: 0.15
-        };
-      },
-      onEachFeature: (feature, layer) => {
-        if (feature.properties?.name) {
-          layer.bindPopup(`<b>${feature.properties.name}</b>`);
-        }
-      }
-    }).addTo(map);
+  layer.bindPopup(`
+    <b>${props.CSE_NAME || "Mining claim"}</b><br>
+    Case: ${props.CSE_NR || "N/A"}<br>
+    Status: ${props.CSE_DISP || "N/A"}<br>
+    Acres: ${props.RCRD_ACRS || "N/A"}
+  `);
+}
 
-    map.fitBounds(geoLayer.getBounds());
-  });
+map.on("moveend", loadClaims);
+loadClaims();

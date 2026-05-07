@@ -4,40 +4,58 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-  <title>Leaflet Area Drawer</title>
+  <title>Mining Claims Map</title>
 
-  <!-- Tailwind CDN (fine for prototype) -->
-  <script src="https://cdn.tailwindcss.com"></script>
-
-  <!-- Leaflet CSS -->
   <link
     rel="stylesheet"
     href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
   />
 
-  <!-- Leaflet Draw CSS -->
-  <link
-    rel="stylesheet"
-    href="https://unpkg.com/leaflet-draw@1.0.4/dist/leaflet.draw.css"
-  />
-
   <style>
+    html,
+    body,
     #map {
-      height: 100vh;
+      height: 100%;
+      margin: 0;
+    }
+
+    .legend {
+      background: white;
+      bottom: 16px;
+      box-shadow: 0 2px 8px rgb(0 0 0 / 20%);
+      color: #111827;
+      font: 14px Arial, sans-serif;
+      left: 16px;
+      padding: 8px 10px;
+      position: absolute;
+      z-index: 500;
+    }
+
+    .swatch {
+      display: inline-block;
+      height: 10px;
+      margin-right: 6px;
+      width: 10px;
+    }
+
+    .open {
+      background: #16a34a;
+    }
+
+    .closed {
+      background: #dc2626;
     }
   </style>
 </head>
 
-<body class="bg-gray-900 text-white">
-
+<body>
   <div id="map"></div>
+  <div class="legend">
+    <div><span class="swatch open"></span>Open claims</div>
+    <div><span class="swatch closed"></span>Closed claims</div>
+  </div>
 
-  <!-- Leaflet JS -->
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-
-  <!-- Leaflet Draw -->
-  <script src="https://unpkg.com/leaflet-draw@1.0.4/dist/leaflet.draw.js"></script>
-
   <script src="app.js"></script>
 </body>
 </html>
