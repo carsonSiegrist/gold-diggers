@@ -47,3 +47,8 @@ out/
 .eslintcache
 .stylelintcache
 .node_repl_history
+
+# Local database data/cache files
+*.db
+*.db-shm
+*.db-wal

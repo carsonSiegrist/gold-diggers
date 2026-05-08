@@ -10,6 +10,10 @@
     rel="stylesheet"
     href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
   />
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet-draw@1.0.4/dist/leaflet.draw.css"
+  />
 
   <style>
     html,
@@ -31,6 +35,61 @@
       z-index: 500;
     }
 
+    .profile-picker {
+      background: white;
+      box-shadow: 0 2px 8px rgb(0 0 0 / 20%);
+      color: #111827;
+      font: 14px Arial, sans-serif;
+      padding: 8px 10px;
+      position: absolute;
+      right: 16px;
+      top: 16px;
+      z-index: 500;
+    }
+
+    .site-picker {
+      background: white;
+      box-shadow: 0 2px 8px rgb(0 0 0 / 20%);
+      color: #111827;
+      font: 14px Arial, sans-serif;
+      padding: 8px 10px;
+      position: absolute;
+      right: 16px;
+      top: 82px;
+      z-index: 500;
+    }
+
+    .claim-picker {
+      background: white;
+      box-shadow: 0 2px 8px rgb(0 0 0 / 20%);
+      color: #111827;
+      font: 14px Arial, sans-serif;
+      padding: 8px 10px;
+      position: absolute;
+      right: 16px;
+      top: 148px;
+      z-index: 500;
+    }
+
+    .profile-picker label,
+    .site-picker label,
+    .claim-picker label {
+      display: block;
+      font-size: 12px;
+      margin-bottom: 4px;
+    }
+
+    .profile-picker select,
+    .site-picker select,
+    .claim-picker select {
+      background: white;
+      border: 1px solid #d1d5db;
+      color: #111827;
+      font: inherit;
+      min-width: 160px;
+      padding: 4px 6px;
+    }
+
     .swatch {
       display: inline-block;
       height: 10px;
@@ -50,12 +109,31 @@
 
 <body>
   <div id="map"></div>
+  <div class="profile-picker">
+    <label for="userSelect">Profile</label>
+    <select id="userSelect">
+      <option value="">Loading profiles...</option>
+    </select>
+  </div>
+  <div class="site-picker">
+    <label for="siteSelect">Saved site</label>
+    <select id="siteSelect">
+      <option value="">Loading sites...</option>
+    </select>
+  </div>
+  <div class="claim-picker">
+    <label for="claimSelect">Saved mining claim</label>
+    <select id="claimSelect">
+      <option value="">Loading claims...</option>
+    </select>
+  </div>
   <div class="legend">
     <div><span class="swatch open"></span>Open claims</div>
     <div><span class="swatch closed"></span>Closed claims</div>
   </div>
 
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="https://unpkg.com/leaflet-draw@1.0.4/dist/leaflet.draw.js"></script>
   <script src="app.js"></script>
 </body>
 </html>
