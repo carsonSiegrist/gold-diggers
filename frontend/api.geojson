@@ -1,0 +1,665 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "id": 1,
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [-114.042145763799, 41.7371928923311],
+            [-114.039796567345, 41.7372031825275],
+            [-114.039719160857, 41.7407558358919],
+            [-114.039719205862, 41.7407924668956],
+            [-114.039719244867, 41.7408231678987],
+            [-114.039761494258, 41.7434104071559],
+            [-114.039776562398, 41.7443331812476],
+            [-114.039776673411, 41.7444187632562],
+            [-114.039815497825, 41.7471625515294],
+            [-114.039819240865, 41.7474270605557],
+            [-114.039819548939, 41.7479247496058],
+            [-114.039819409955, 41.7480282766162],
+            [-114.039854051343, 41.7506051078729],
+            [-114.039866121479, 41.7515030899624],
+            [-114.039866077485, 41.7515428849664],
+            [-114.039865984497, 41.7516248659747],
+            [-114.042245125958, 41.7516227137765],
+            [-114.047080436895, 41.7516138793733],
+            [-114.051925303835, 41.75161332297],
+            [-114.056770170775, 41.7516127945668],
+            [-114.056743595233, 41.7479946492048],
+            [-114.056717000691, 41.7443764978428],
+            [-114.051873160752, 41.744379138246],
+            [-114.047029349812, 41.7443815826492],
+            [-114.047003809271, 41.740765432287],
+            [-114.04697826973, 41.7371492809249],
+            [-114.042145763799, 41.7371928923311]
+          ]
+        ]
+      },
+      "properties": {
+        "OBJECTID": 1,
+        "CSE_NAME": "WR 195",
+        "CSE_NR": "NV105216280",
+        "LEG_CSE_NR": "",
+        "CSE_DISP": "Active",
+        "CSE_TYPE_NR": "384101",
+        "RCRD_ACRS": 20.66,
+        "CSE_META": "NV 21 0450N 0700E 032 A NWNE|NV 21 0450N 0700E 032 A SWNE|NV 21 0450N 0700E 032 A NENE|NV 21 0450N 0700E 032 A SENE|NV 21 0450N 0700E 033 A Government Lot 4|NV 21 0450N 0700E 033 A Government Lot 2|NV 21 0450N 0700E 033 A Government Lot 3|NV 21 0450N 0700E 033 A Government Lot 1|NV 21 0450N 0700E 033 A SWNW|NV 21 0450N 0700E 033 A NWSW|NV 21 0450N 0700E 033 A SWSW|NV 21 0450N 0700E 033 A NWNW",
+        "QLTY": "8: \n18 sections retrieved\n240 intersected features retrieved, \n18 sections retrieved\n240 intersected features retrieved, \n18 sections retrieved\n240 intersected features retrieved, \n18 sections retrieved\n240 intersected features retrieved, Only mapped PLSS"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 2,
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [-114.051873160752, 41.744379138246],
+            [-114.047029349812, 41.7443815826492],
+            [-114.047054889354, 41.7479977340112],
+            [-114.047080436895, 41.7516138793733],
+            [-114.051925303835, 41.75161332297],
+            [-114.056770170775, 41.7516127945668],
+            [-114.056743595233, 41.7479946492048],
+            [-114.056717000691, 41.7443764978428],
+            [-114.051873160752, 41.744379138246]
+          ]
+        ]
+      },
+      "properties": {
+        "OBJECTID": 2,
+        "CSE_NAME": "WR 196",
+        "CSE_NR": "NV105216281",
+        "LEG_CSE_NR": "",
+        "CSE_DISP": "Active",
+        "CSE_TYPE_NR": "384101",
+        "RCRD_ACRS": 20.66,
+        "CSE_META": "NV 21 0450N 0700E 032 A NWNE|NV 21 0450N 0700E 032 A SWNE|NV 21 0450N 0700E 032 A NENE|NV 21 0450N 0700E 032 A SENE",
+        "QLTY": "0: \n18 sections retrieved\n240 intersected features retrieved, \n18 sections retrieved\n240 intersected features retrieved, \n18 sections retrieved\n240 intersected features retrieved, \n18 sections retrieved\n240 intersected features retrieved"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 3,
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [-114.051821025669, 41.7371443365216],
+            [-114.04697826973, 41.7371492809249],
+            [-114.047003809271, 41.740765432287],
+            [-114.047029349812, 41.7443815826492],
+            [-114.047054889354, 41.7479977340112],
+            [-114.047080436895, 41.7516138793733],
+            [-114.051925303835, 41.75161332297],
+            [-114.056770170775, 41.7516127945668],
+            [-114.056743595233, 41.7479946492048],
+            [-114.056717000691, 41.7443764978428],
+            [-114.056690405149, 41.7407579584806],
+            [-114.056663808607, 41.7371393921184],
+            [-114.051821025669, 41.7371443365216]
+          ]
+        ]
+      },
+      "properties": {
+        "OBJECTID": 3,
+        "CSE_NAME": "WR 198",
+        "CSE_NR": "NV105216283",
+        "LEG_CSE_NR": "",
+        "CSE_DISP": "Active",
+        "CSE_TYPE_NR": "384101",
+        "RCRD_ACRS": 20.66,
+        "CSE_META": "NV 21 0450N 0700E 032 A SESE|NV 21 0450N 0700E 032 A NESE|NV 21 0450N 0700E 032 A SWNE|NV 21 0450N 0700E 032 A NWSE|NV 21 0450N 0700E 032 A SWSE|NV 21 0450N 0700E 032 A NWNE|NV 21 0450N 0700E 032 A NENE|NV 21 0450N 0700E 032 A SENE",
+        "QLTY": "0: \n18 sections retrieved\n240 intersected features retrieved, \n18 sections retrieved\n240 intersected features retrieved, \n18 sections retrieved\n240 intersected features retrieved, \n18 sections retrieved\n240 intersected features retrieved, \n18 sections ret"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 4,
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [-114.051821025669, 41.7371443365216],
+            [-114.04697826973, 41.7371492809249],
+            [-114.042145763799, 41.7371928923311],
+            [-114.039796567345, 41.7372031825275],
+            [-114.039719160857, 41.7407558358919],
+            [-114.039719205862, 41.7407924668956],
+            [-114.039719244867, 41.7408231678987],
+            [-114.039761494258, 41.7434104071559],
+            [-114.039776562398, 41.7443331812476],
+            [-114.039776673411, 41.7444187632562],
+            [-114.039815497825, 41.7471625515294],
+            [-114.039819240865, 41.7474270605557],
+            [-114.039819548939, 41.7479247496058],
+            [-114.039819409955, 41.7480282766162],
+            [-114.039854051343, 41.7506051078729],
+            [-114.039866121479, 41.7515030899624],
+            [-114.039866077485, 41.7515428849664],
+            [-114.039865984497, 41.7516248659747],
+            [-114.042245125958, 41.7516227137765],
+            [-114.047080436895, 41.7516138793733],
+            [-114.051925303835, 41.75161332297],
+            [-114.056770170775, 41.7516127945668],
+            [-114.056743595233, 41.7479946492048],
+            [-114.056717000691, 41.7443764978428],
+            [-114.056690405149, 41.7407579584806],
+            [-114.056663808607, 41.7371393921184],
+            [-114.051821025669, 41.7371443365216]
+          ]
+        ]
+      },
+      "properties": {
+        "OBJECTID": 4,
+        "CSE_NAME": "WR 199",
+        "CSE_NR": "NV105216284",
+        "LEG_CSE_NR": "",
+        "CSE_DISP": "Active",
+        "CSE_TYPE_NR": "384101",
+        "RCRD_ACRS": 20.66,
+        "CSE_META": "NV 21 0450N 0700E 032 A SESE|NV 21 0450N 0700E 032 A NESE|NV 21 0450N 0700E 032 A NWSE|NV 21 0450N 0700E 032 A SWSE|NV 21 0450N 0700E 032 A NWNE|NV 21 0450N 0700E 032 A SWNE|NV 21 0450N 0700E 032 A NENE|NV 21 0450N 0700E 032 A SENE|NV 21 0450N 0700E 033 A Government Lot 4|NV 21 0450N 0700E 033 A Government Lot 3|NV 21 0450N 0700E 033 A Government Lot 1|NV 21 0450N 0700E 033 A SWNW|NV 21 0450N 0700E 033 A Government Lot 2|NV 21 0450N 0700E 033 A NWSW|NV 21 0450N 0700E 033 A SWSW|NV 21 0450N 0700E 033 A NWNW",
+        "QLTY": "8: \n18 sections retrieved\n240 intersected features retrieved, \n18 sections retrieved\n240 intersected features retrieved, \n18 sections retrieved\n240 intersected features retrieved, \n18 sections retrieved\n240 intersected features retrieved, \n18 sections ret"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 5,
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [-114.051821025669, 41.7371443365216],
+            [-114.04697826973, 41.7371492809249],
+            [-114.047003809271, 41.740765432287],
+            [-114.047029349812, 41.7443815826492],
+            [-114.051873160752, 41.744379138246],
+            [-114.056717000691, 41.7443764978428],
+            [-114.056690405149, 41.7407579584806],
+            [-114.056663808607, 41.7371393921184],
+            [-114.051821025669, 41.7371443365216]
+          ]
+        ]
+      },
+      "properties": {
+        "OBJECTID": 5,
+        "CSE_NAME": "WR 200",
+        "CSE_NR": "NV105216457",
+        "LEG_CSE_NR": "",
+        "CSE_DISP": "Active",
+        "CSE_TYPE_NR": "384101",
+        "RCRD_ACRS": 20.66,
+        "CSE_META": "NV 21 0450N 0700E 032 A SESE|NV 21 0450N 0700E 032 A NESE|NV 21 0450N 0700E 032 A NWSE|NV 21 0450N 0700E 032 A SWSE",
+        "QLTY": "0: \n18 sections retrieved\n240 intersected features retrieved, \n18 sections retrieved\n240 intersected features retrieved, \n18 sections retrieved\n240 intersected features retrieved, \n18 sections retrieved\n240 intersected features retrieved"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 6,
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [-114.051821025669, 41.7371443365216],
+            [-114.04697826973, 41.7371492809249],
+            [-114.042145763799, 41.7371928923311],
+            [-114.039796567345, 41.7372031825275],
+            [-114.039719160857, 41.7407558358919],
+            [-114.039719205862, 41.7407924668956],
+            [-114.039719244867, 41.7408231678987],
+            [-114.039761494258, 41.7434104071559],
+            [-114.039776562398, 41.7443331812476],
+            [-114.039776673411, 41.7444187632562],
+            [-114.039815497825, 41.7471625515294],
+            [-114.039819240865, 41.7474270605557],
+            [-114.039819548939, 41.7479247496058],
+            [-114.039819409955, 41.7480282766162],
+            [-114.039854051343, 41.7506051078729],
+            [-114.039866121479, 41.7515030899624],
+            [-114.039866077485, 41.7515428849664],
+            [-114.039865984497, 41.7516248659747],
+            [-114.042245125958, 41.7516227137765],
+            [-114.047080436895, 41.7516138793733],
+            [-114.047054889354, 41.7479977340112],
+            [-114.047029349812, 41.7443815826492],
+            [-114.051873160752, 41.744379138246],
+            [-114.056717000691, 41.7443764978428],
+            [-114.056690405149, 41.7407579584806],
+            [-114.056663808607, 41.7371393921184],
+            [-114.051821025669, 41.7371443365216]
+          ]
+        ]
+      },
+      "properties": {
+        "OBJECTID": 6,
+        "CSE_NAME": "WR 201",
+        "CSE_NR": "NV105216458",
+        "LEG_CSE_NR": "",
+        "CSE_DISP": "Active",
+        "CSE_TYPE_NR": "384101",
+        "RCRD_ACRS": 20.66,
+        "CSE_META": "NV 21 0450N 0700E 032 A SWSE|NV 21 0450N 0700E 032 A NWSE|NV 21 0450N 0700E 032 A NESE|NV 21 0450N 0700E 032 A SESE|NV 21 0450N 0700E 033 A Government Lot 4|NV 21 0450N 0700E 033 A SWNW|NV 21 0450N 0700E 033 A Government Lot 2|NV 21 0450N 0700E 033 A NWSW|NV 21 0450N 0700E 033 A NWNW|NV 21 0450N 0700E 033 A Government Lot 3|NV 21 0450N 0700E 033 A Government Lot 1|NV 21 0450N 0700E 033 A SWSW",
+        "QLTY": "8: \n18 sections retrieved\n240 intersected features retrieved, \n18 sections retrieved\n240 intersected features retrieved, \n18 sections retrieved\n240 intersected features retrieved, \n18 sections retrieved\n240 intersected features retrieved, Only mapped PLSS"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 7,
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [-114.051821025669, 41.7371443365216],
+            [-114.04697826973, 41.7371492809249],
+            [-114.047003809271, 41.740765432287],
+            [-114.047029349812, 41.7443815826492],
+            [-114.051873160752, 41.744379138246],
+            [-114.056717000691, 41.7443764978428],
+            [-114.056690405149, 41.7407579584806],
+            [-114.056663808607, 41.7371393921184],
+            [-114.051821025669, 41.7371443365216]
+          ]
+        ]
+      },
+      "properties": {
+        "OBJECTID": 7,
+        "CSE_NAME": "WR 202",
+        "CSE_NR": "NV105216459",
+        "LEG_CSE_NR": "",
+        "CSE_DISP": "Active",
+        "CSE_TYPE_NR": "384101",
+        "RCRD_ACRS": 20.66,
+        "CSE_META": "NV 21 0450N 0700E 032 A NESE|NV 21 0450N 0700E 032 A SESE|NV 21 0450N 0700E 032 A SWSE|NV 21 0450N 0700E 032 A NWSE",
+        "QLTY": "0: \n18 sections retrieved\n240 intersected features retrieved, \n18 sections retrieved\n240 intersected features retrieved, \n18 sections retrieved\n240 intersected features retrieved, \n18 sections retrieved\n240 intersected features retrieved"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 8,
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [-114.051821025669, 41.7371443365216],
+            [-114.04697826973, 41.7371492809249],
+            [-114.042145763799, 41.7371928923311],
+            [-114.039796567345, 41.7372031825275],
+            [-114.039719160857, 41.7407558358919],
+            [-114.039719205862, 41.7407924668956],
+            [-114.039719244867, 41.7408231678987],
+            [-114.039761494258, 41.7434104071559],
+            [-114.039776562398, 41.7443331812476],
+            [-114.039776673411, 41.7444187632562],
+            [-114.039815497825, 41.7471625515294],
+            [-114.039819240865, 41.7474270605557],
+            [-114.039819548939, 41.7479247496058],
+            [-114.039819409955, 41.7480282766162],
+            [-114.039854051343, 41.7506051078729],
+            [-114.039866121479, 41.7515030899624],
+            [-114.039866077485, 41.7515428849664],
+            [-114.039865984497, 41.7516248659747],
+            [-114.042245125958, 41.7516227137765],
+            [-114.047080436895, 41.7516138793733],
+            [-114.047054889354, 41.7479977340112],
+            [-114.047029349812, 41.7443815826492],
+            [-114.051873160752, 41.744379138246],
+            [-114.056717000691, 41.7443764978428],
+            [-114.056690405149, 41.7407579584806],
+            [-114.056663808607, 41.7371393921184],
+            [-114.051821025669, 41.7371443365216]
+          ]
+        ]
+      },
+      "properties": {
+        "OBJECTID": 8,
+        "CSE_NAME": "WR 203",
+        "CSE_NR": "NV105216460",
+        "LEG_CSE_NR": "",
+        "CSE_DISP": "Active",
+        "CSE_TYPE_NR": "384101",
+        "RCRD_ACRS": 20.66,
+        "CSE_META": "NV 21 0450N 0700E 032 A SWSE|NV 21 0450N 0700E 032 A NESE|NV 21 0450N 0700E 032 A SESE|NV 21 0450N 0700E 032 A NWSE|NV 21 0450N 0700E 033 A Government Lot 4|NV 21 0450N 0700E 033 A NWNW|NV 21 0450N 0700E 033 A NWSW|NV 21 0450N 0700E 033 A Government Lot 2|NV 21 0450N 0700E 033 A SWNW|NV 21 0450N 0700E 033 A Government Lot 3|NV 21 0450N 0700E 033 A Government Lot 1|NV 21 0450N 0700E 033 A SWSW",
+        "QLTY": "8: \n18 sections retrieved\n240 intersected features retrieved, \n18 sections retrieved\n240 intersected features retrieved, \n18 sections retrieved\n240 intersected features retrieved, \n18 sections retrieved\n240 intersected features retrieved, Only mapped PLSS"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 9,
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [-114.046830023546, 41.722599456471],
+            [-114.046876675095, 41.7262482738349],
+            [-114.046923326645, 41.7298970911987],
+            [-114.051785084589, 41.7299029507951],
+            [-114.056646896532, 41.7299086173915],
+            [-114.056638357992, 41.7262741890261],
+            [-114.056629844452, 41.7226397886606],
+            [-114.051729920499, 41.7226196230658],
+            [-114.046830023546, 41.722599456471]
+          ]
+        ]
+      },
+      "properties": {
+        "OBJECTID": 9,
+        "CSE_NAME": "WR 204",
+        "CSE_NR": "NV105216461",
+        "LEG_CSE_NR": "",
+        "CSE_DISP": "Active",
+        "CSE_TYPE_NR": "384101",
+        "RCRD_ACRS": 20.66,
+        "CSE_META": "NV 21 0440N 0700E 005 A NWSE|NV 21 0440N 0700E 005 A NESE|NV 21 0440N 0700E 005 A SESE|NV 21 0440N 0700E 005 A SWSE",
+        "QLTY": "0: \n18 sections retrieved\n240 intersected features retrieved, \n18 sections retrieved\n240 intersected features retrieved, \n18 sections retrieved\n240 intersected features retrieved, \n18 sections retrieved\n240 intersected features retrieved"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 10,
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [-114.046830023546, 41.722599456471],
+            [-114.046876675095, 41.7262482738349],
+            [-114.046923326645, 41.7298970911987],
+            [-114.051785084589, 41.7299029507951],
+            [-114.056646896532, 41.7299086173915],
+            [-114.056638357992, 41.7262741890261],
+            [-114.056629844452, 41.7226397886606],
+            [-114.051729920499, 41.7226196230658],
+            [-114.046830023546, 41.722599456471]
+          ]
+        ]
+      },
+      "properties": {
+        "OBJECTID": 10,
+        "CSE_NAME": "WR 206",
+        "CSE_NR": "NV105216463",
+        "LEG_CSE_NR": "",
+        "CSE_DISP": "Active",
+        "CSE_TYPE_NR": "384101",
+        "RCRD_ACRS": 20.66,
+        "CSE_META": "NV 21 0440N 0700E 005 A SWSE|NV 21 0440N 0700E 005 A SESE|NV 21 0440N 0700E 005 A NWSE|NV 21 0440N 0700E 005 A NESE",
+        "QLTY": "0: \n18 sections retrieved\n240 intersected features retrieved, \n18 sections retrieved\n240 intersected features retrieved, \n18 sections retrieved\n240 intersected features retrieved, \n18 sections retrieved\n240 intersected features retrieved"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 1,
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [-107.751083559048, 33.430178285319],
+            [-107.751168648362, 33.4342991639418],
+            [-107.75313528778, 33.4342706198383],
+            [-107.753050103466, 33.4301497422156],
+            [-107.751083559048, 33.430178285319]
+          ]
+        ]
+      },
+      "properties": {
+        "OBJECTID": 1,
+        "CSE_NAME": "IV-1",
+        "CSE_NR": "NM105221414",
+        "LEG_CSE_NR": null,
+        "CSE_DISP": "Closed",
+        "CSE_TYPE_NR": "384101",
+        "RCRD_ACRS": 20.66,
+        "CSE_META": "NM 23 0100S 0090W 015 A NWNW|NM 23 0100S 0090W 015 A SWNW|NM 23 0100S 0090W 015 A NESW|NM 23 0100S 0090W 015 A SENW|NM 23 0100S 0090W 015 A Government Lot 6|NM 23 0100S 0090W 015 A Government Lot 4|NM 23 0100S 0090W 015 A ALL|NM 23 0100S 0090W 015 A Government Lot 3|NM 23 0100S 0090W 015 A Government Lot 1|NM 23 0100S 0090W 015 A ALL|NM 23 0100S 0090W 015 A ALL|NM 23 0100S 0090W 015 A SESW|NM 23 0100S 0090W 015 A Government Lot 5|NM 23 0100S 0090W 015 A ALL|NM 23 0100S 0090W 015 A NENW|NM 23 0100S 0090W 015 A Government Lot 8|NM 23 0100S 0090W 015 A ALL|NM 23 0100S 0090W 015 A Government Lot 7|NM 23 0100S 0090W 015 A Government Lot 2|NM 23 0100S 0090W 015 A NWSW|NM 23 0100S 0090W 015 A SWSW",
+        "QLTY": "100"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 2,
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [-106.982735679715, 32.6126693161428],
+            [-106.982688385432, 32.6085459794945],
+            [-106.980740504012, 32.608561980589],
+            [-106.980787704294, 32.6126853182374],
+            [-106.982735679715, 32.6126693161428]
+          ]
+        ]
+      },
+      "properties": {
+        "OBJECTID": 2,
+        "CSE_NAME": "PHANTOM 1",
+        "CSE_NR": "NM105224614",
+        "LEG_CSE_NR": null,
+        "CSE_DISP": "Closed",
+        "CSE_TYPE_NR": "384101",
+        "RCRD_ACRS": 20.66,
+        "CSE_META": "NM 23 0190S 0010W 031 A NW|NM 23 0190S 0010W 031 A NE|NM 23 0190S 0010W 031 A SW|NM 23 0190S 0010W 031 A SE|NM 23 0190S 0010W 031 A ALL|NM 23 0190S 0010W 031 A Government Lot 3|NM 23 0190S 0010W 031 A Government Lot 5|NM 23 0190S 0010W 031 A Government Lot 13|NM 23 0190S 0010W 031 A Government Lot 14|NM 23 0190S 0010W 031 A Government Lot 16|NM 23 0190S 0010W 031 A Government Lot 2|NM 23 0190S 0010W 031 A Government Lot 7|NM 23 0190S 0010W 031 A Government Lot 4|NM 23 0190S 0010W 031 A Government Lot 15|NM 23 0190S 0010W 031 A Government Lot 9|NM 23 0190S 0010W 031 A Government Lot 14|NM 23 0190S 0010W 031 A Government Lot 8|NM 23 0190S 0010W 031 A Government Lot 12|NM 23 0190S 0010W 031 A Government Lot 1|NM 23 0190S 0010W 031 A Government Lot 11|NM 23 0190S 0010W 031 A Government Lot 10|NM 23 0190S 0010W 031 A Government Lot 6",
+        "QLTY": "100"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 3,
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [-103.609629045881, 44.0534145273478],
+            [-103.604610794655, 44.0534164877522],
+            [-103.604590231212, 44.0570458792052],
+            [-103.609611733439, 44.0570403928],
+            [-103.609629045881, 44.0534145273478]
+          ]
+        ]
+      },
+      "properties": {
+        "OBJECTID": 3,
+        "CSE_NAME": "HC356",
+        "CSE_NR": "MT101901060",
+        "LEG_CSE_NR": null,
+        "CSE_DISP": "Closed",
+        "CSE_TYPE_NR": "384101",
+        "RCRD_ACRS": 4869.16,
+        "CSE_META": "SD 07 0010N 0040E 010 Lot6 | SD 07 0010N 0040E 010 Lot7 | SD 07 0010N 0040E 010 NENE | SD 07 0010N 0040E 010 NESE | SD 07 0010N 0040E 010 NWNE | SD 07 0010N 0040E 010 NWSE | SD 07 0010N 0040E 010 SENE | SD 07 0010N 0040E 010 SWNE | SD 07 0010N 0040E 011 Lot3 | SD 07 0010N 0040E 011 Lot4 | SD 07 0010N 0040E 011 Lot5 | SD 07 0010N 0040E 011 Lot6 | SD 07 0010N 0040E 011 Lot7 | SD 07 0010N 0040E 011 NESW | SD 07 0010N 0040E 011 SENW | SD 07 0010N 0040E 011 SESW",
+        "QLTY": "8; Only mapped PLSS First Div, aliquot; Only mapped PLSS First Div, aliquot; Only mapped PLSS First Div, aliquot; Only mapped PLSS First Div, aliquot; Only mapped PLSS First Div, aliquot; Only mapped PLSS First Div, aliquot; Only mapped PLSS First Div, al"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 4,
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [-114.018124230444, 41.5079227651149],
+            [-114.018197504988, 41.5115594414785],
+            [-114.02307580693, 41.5115374570745],
+            [-114.022999473386, 41.5079063607117],
+            [-114.018124230444, 41.5079227651149]
+          ]
+        ]
+      },
+      "properties": {
+        "OBJECTID": 4,
+        "CSE_NAME": "RG # 152",
+        "CSE_NR": "UT105228819",
+        "LEG_CSE_NR": null,
+        "CSE_DISP": "Closed",
+        "CSE_TYPE_NR": "384101",
+        "RCRD_ACRS": 2640,
+        "CSE_META": "UT 26 0090N 0190W 010 Lot10 | UT 26 0090N 0190W 010 Lot5 | UT 26 0090N 0190W 010 Lot6 | UT 26 0090N 0190W 010 Lot9 | UT 26 0090N 0190W 010 SESW | UT 26 0090N 0190W 010 SWSW",
+        "QLTY": "8; Only mapped PLSS First Div, DOES NOT MATCH PM ANGLES, aliquot; Only mapped PLSS First Div, DOES NOT MATCH PM ANGLES, aliquot; Only mapped PLSS First Div, DOES NOT MATCH PM ANGLES, aliquot; Only mapped PLSS First Div, DOES NOT MATCH PM ANGLES, aliquot"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 5,
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [-107.757136174928, 33.4800874456038],
+            [-107.759103875346, 33.4800588044999],
+            [-107.759018354031, 33.4759380208779],
+            [-107.757050749613, 33.4759666609818],
+            [-107.757136174928, 33.4800874456038]
+          ]
+        ]
+      },
+      "properties": {
+        "OBJECTID": 5,
+        "CSE_NAME": "NR 7",
+        "CSE_NR": "NM105229512",
+        "LEG_CSE_NR": null,
+        "CSE_DISP": "Closed",
+        "CSE_TYPE_NR": "384101",
+        "RCRD_ACRS": 20.66,
+        "CSE_META": "NM 23 0090S 0100W 003 A NW|NM 23 0090S 0100W 003 A NE|NM 23 0090S 0090W 034 A SW|NM 23 0090S 0090W 034 A SE|NM 23 0090S 0090W 034 A Government Lot 3|NM 23 0090S 0090W 034 A NESE|NM 23 0090S 0090W 034 A NWSE|NM 23 0090S 0090W 034 A NESW|NM 23 0090S 0090W 034 A Government Lot 4|NM 23 0090S 0090W 034 A Government Lot 5|NM 23 0090S 0090W 034 A Government Lot 2|NM 23 0090S 0090W 034 A NWSW",
+        "QLTY": "100"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 6,
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [-107.755090010493, 33.4801171947119],
+            [-107.757057711911, 33.480088587608],
+            [-107.756972291596, 33.475967801986],
+            [-107.755004685178, 33.4759964090898],
+            [-107.755090010493, 33.4801171947119]
+          ]
+        ]
+      },
+      "properties": {
+        "OBJECTID": 6,
+        "CSE_NAME": "NR 8",
+        "CSE_NR": "NM105229513",
+        "LEG_CSE_NR": null,
+        "CSE_DISP": "Closed",
+        "CSE_TYPE_NR": "384101",
+        "RCRD_ACRS": 20.66,
+        "CSE_META": "NM 23 0090S 0090W 034 A SE|NM 23 0100S 0090W 003 A NE",
+        "QLTY": "100"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 7,
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [-107.766439202807, 33.4786010739073],
+            [-107.764471539389, 33.4786298350112],
+            [-107.764557327704, 33.4827506096331],
+            [-107.766525087123, 33.4827218475291],
+            [-107.766439202807, 33.4786010739073]
+          ]
+        ]
+      },
+      "properties": {
+        "OBJECTID": 7,
+        "CSE_NAME": "CR 4",
+        "CSE_NR": "NM105229514",
+        "LEG_CSE_NR": null,
+        "CSE_DISP": "Closed",
+        "CSE_TYPE_NR": "384101",
+        "RCRD_ACRS": 20.66,
+        "CSE_META": "NM 23 0100S 0090W 004 A NE|NM 23 0090S 0090W 033 A Government Lot 9|NM 23 0090S 0090W 033 A Government Lot 8|NM 23 0090S 0090W 033 A Government Lot 4|NM 23 0090S 0090W 033 A NESE",
+        "QLTY": "100"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 8,
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [-107.764398289374, 33.4786309050151],
+            [-107.762430623956, 33.478659632119],
+            [-107.762516313271, 33.4827804087409],
+            [-107.764484073689, 33.4827516796369],
+            [-107.764398289374, 33.4786309050151]
+          ]
+        ]
+      },
+      "properties": {
+        "OBJECTID": 8,
+        "CSE_NAME": "CR 5",
+        "CSE_NR": "NM105229515",
+        "LEG_CSE_NR": null,
+        "CSE_DISP": "Closed",
+        "CSE_TYPE_NR": "384101",
+        "RCRD_ACRS": 20.66,
+        "CSE_META": "NM 23 0090S 0090W 034 A SW|NM 23 0100S 0090W 004 A SW",
+        "QLTY": "100"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 9,
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [-107.762361360941, 33.4786606431227],
+            [-107.760393694523, 33.4786893372265],
+            [-107.760479284838, 33.4828101148485],
+            [-107.762447046256, 33.4827814187445],
+            [-107.762361360941, 33.4786606431227]
+          ]
+        ]
+      },
+      "properties": {
+        "OBJECTID": 9,
+        "CSE_NAME": "CR 6",
+        "CSE_NR": "NM105229516",
+        "LEG_CSE_NR": null,
+        "CSE_DISP": "Closed",
+        "CSE_TYPE_NR": "384101",
+        "RCRD_ACRS": 20.66,
+        "CSE_META": "NM 23 0090S 0090W 034 A Government Lot 3|NM 23 0090S 0090W 034 A NESW|NM 23 0090S 0090W 034 A Government Lot 2|NM 23 0090S 0090W 034 A NWSW|NM 23 0100S 0090W 003 A NW",
+        "QLTY": "100"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 10,
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [-107.760370725518, 33.4786896722277],
+            [-107.7584030581, 33.4787183333317],
+            [-107.758488551415, 33.4828391119536],
+            [-107.760456314833, 33.4828104488497],
+            [-107.760370725518, 33.4786896722277]
+          ]
+        ]
+      },
+      "properties": {
+        "OBJECTID": 10,
+        "CSE_NAME": "CR 7",
+        "CSE_NR": "NM105229517",
+        "LEG_CSE_NR": null,
+        "CSE_DISP": "Closed",
+        "CSE_TYPE_NR": "384101",
+        "RCRD_ACRS": 20.66,
+        "CSE_META": "NM 23 0090S 0090W 034 A SW|NM 23 0100S 0090W 003 A NW",
+        "QLTY": "100"
+      }
+    }
+  ],
+  "exceededTransferLimit": true,
+  "properties": {
+    "exceededTransferLimit": true
+  }
+}

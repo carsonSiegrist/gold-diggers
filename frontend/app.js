@@ -1,7 +1,7 @@
-// Initialize map
-const map = L.map('map').setView([32.3199, -106.7637], 13); // Las Cruces
+// Initialize map centered on Las Cruces
+const map = L.map('map').setView([32.3199, -106.7637], 13);
 
-// Tile layer
+// Add OpenStreetMap tile layer
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
   maxZoom: 19,
 }).addTo(map);
@@ -10,7 +10,7 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 const drawnItems = new L.FeatureGroup();
 map.addLayer(drawnItems);
 
-// Draw control
+// Draw control for polygons and rectangles
 const drawControl = new L.Control.Draw({
   draw: {
     polygon: true,
@@ -26,11 +26,11 @@ const drawControl = new L.Control.Draw({
 
 map.addControl(drawControl);
 
-// When user draws something
+// Event listener for when user creates a drawing
 map.on(L.Draw.Event.CREATED, function (event) {
   const layer = event.layer;
 
-  // Apply blue styling
+  // Apply blue styling to the drawn layer
   layer.setStyle({
     color: '#3b82f6',     // Tailwind blue-500
     fillColor: '#3b82f6',
@@ -40,12 +40,16 @@ map.on(L.Draw.Event.CREATED, function (event) {
   drawnItems.addLayer(layer);
 });
 
-fetch('areas.geojson')
+// Fetch GeoJSON data from API
+fetch('http://localhost:5000/api/claims?limit=1000')
   .then(res => res.json())
   .then(data => {
+    console.log("phew")
+    // Create GeoJSON layer with custom styling and popups
     const geoLayer = L.geoJSON(data, {
       style: (feature) => {
-        const color = feature.properties?.color || '#eab308'; // fallback
+        // Set color based on CSE_DISP property: green for Active, red otherwise
+        const color = feature.properties?.CSE_DISP == 'Active' ? '#181' : '#b11';
 
         return {
           color: color,        // outline
@@ -55,11 +59,17 @@ fetch('areas.geojson')
         };
       },
       onEachFeature: (feature, layer) => {
-        if (feature.properties?.name) {
-          layer.bindPopup(`<b>${feature.properties.name}</b>`);
+        // Bind popup with CSE_NAME and CSE_NR if available
+        if (feature.properties?.CSE_NAME) {
+          layer.bindPopup(`<b>
+            ${feature.properties.CSE_NAME}
+            <br />
+            ${feature.properties.CSE_NR}
+            </b>`);
         }
       }
     }).addTo(map);
 
+    // Fit map bounds to the GeoJSON layer
     map.fitBounds(geoLayer.getBounds());
   });

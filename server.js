@@ -1,8 +1,11 @@
 const express = require("express");
 
 const app = express();
+const cors = require("cors");
+
 const PORT = 5000;
 
+app.use(cors());
 app.use(express.static(__dirname));
 
 const BLM_LAYERS = {
@@ -21,6 +24,7 @@ function clean(value) {
 }
 
 app.get("/api/claims", async (req, res) => {
+  
   try {
     const status = String(req.query.status || "active").toLowerCase();
     const q = req.query.q ? clean(req.query.q) : "";
