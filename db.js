@@ -10,6 +10,8 @@ db.exec(`
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     email TEXT UNIQUE,
     name TEXT NOT NULL,
+    password_hash TEXT,
+    password_salt TEXT,
     created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP
   );
 
@@ -34,7 +36,27 @@ db.exec(`
     geojson TEXT NOT NULL,
     fetched_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP
   );
+
+  CREATE TABLE IF NOT EXISTS user_sessions (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_id INTEGER NOT NULL,
+    token_hash TEXT NOT NULL UNIQUE,
+    expires_at TEXT NOT NULL,
+    created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,
+
+    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+  );
 `);
+
+const userColumns = db.prepare("PRAGMA table_info(users)").all().map((column) => column.name);
+
+if (!userColumns.includes("password_hash")) {
+  db.prepare("ALTER TABLE users ADD COLUMN password_hash TEXT").run();
+}
+
+if (!userColumns.includes("password_salt")) {
+  db.prepare("ALTER TABLE users ADD COLUMN password_salt TEXT").run();
+}
 
 const defaultUser = db
   .prepare("SELECT id FROM users WHERE email = ?")

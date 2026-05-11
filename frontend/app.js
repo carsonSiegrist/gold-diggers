@@ -1,4 +1,7 @@
-let currentUserId = 1;
+let currentUser = JSON.parse(localStorage.getItem("goldDiggersUser") || "null");
+let authToken = localStorage.getItem("goldDiggersToken");
+let currentUserId = currentUser?.id || null;
+let authMode = "login";
 const savedSiteLayers = new Map();
 const savedSiteNames = new Map();
 const savedSiteStyle = {
@@ -55,16 +58,112 @@ const drawControl = new L.Control.Draw({
 
 map.addControl(drawControl);
 
-const userSelect = document.getElementById("userSelect");
+const authPanel = document.getElementById("authPanel");
+const accountPanel = document.getElementById("accountPanel");
+const accountName = document.getElementById("accountName");
+const loginTab = document.getElementById("loginTab");
+const signupTab = document.getElementById("signupTab");
+const nameField = document.getElementById("nameField");
+const nameInput = document.getElementById("nameInput");
+const emailInput = document.getElementById("emailInput");
+const passwordInput = document.getElementById("passwordInput");
+const authSubmit = document.getElementById("authSubmit");
+const authError = document.getElementById("authError");
+const logoutButton = document.getElementById("logoutButton");
 const siteSelect = document.getElementById("siteSelect");
 const claimSelect = document.getElementById("claimSelect");
 
-L.DomEvent.disableClickPropagation(userSelect);
-L.DomEvent.disableScrollPropagation(userSelect);
+L.DomEvent.disableClickPropagation(authPanel);
+L.DomEvent.disableScrollPropagation(authPanel);
+L.DomEvent.disableClickPropagation(accountPanel);
+L.DomEvent.disableScrollPropagation(accountPanel);
 L.DomEvent.disableClickPropagation(siteSelect);
 L.DomEvent.disableScrollPropagation(siteSelect);
 L.DomEvent.disableClickPropagation(claimSelect);
 L.DomEvent.disableScrollPropagation(claimSelect);
+
+function setAuthMode(mode) {
+  authMode = mode;
+  const isSignup = mode === "signup";
+
+  loginTab.classList.toggle("active", !isSignup);
+  signupTab.classList.toggle("active", isSignup);
+  nameField.hidden = !isSignup;
+  nameInput.required = isSignup;
+  passwordInput.autocomplete = isSignup ? "new-password" : "current-password";
+  authSubmit.textContent = isSignup ? "Create account" : "Log in";
+  authError.textContent = "";
+}
+
+function setAuthState(payload) {
+  currentUser = payload.user;
+  currentUserId = currentUser.id;
+  authToken = payload.token;
+
+  localStorage.setItem("goldDiggersUser", JSON.stringify(currentUser));
+  localStorage.setItem("goldDiggersToken", authToken);
+  localStorage.setItem("goldDiggersTokenExpiresAt", payload.expiresAt || "");
+
+  renderAuthState();
+}
+
+function clearAuthState(message = "") {
+  currentUser = null;
+  currentUserId = null;
+  authToken = null;
+
+  localStorage.removeItem("goldDiggersUser");
+  localStorage.removeItem("goldDiggersToken");
+  localStorage.removeItem("goldDiggersTokenExpiresAt");
+
+  drawnItems.clearLayers();
+  savedSites.clearLayers();
+  savedSiteLayers.clear();
+  savedSiteNames.clear();
+  siteSelect.innerHTML = '<option value="">Log in to view sites</option>';
+  claimSelect.innerHTML = '<option value="">Log in to view claims</option>';
+  authError.textContent = message;
+  renderAuthState();
+}
+
+function renderAuthState() {
+  const isLoggedIn = Boolean(currentUser && authToken);
+
+  authPanel.hidden = isLoggedIn;
+  accountPanel.hidden = !isLoggedIn;
+
+  if (isLoggedIn) {
+    accountName.textContent = currentUser.name;
+  }
+}
+
+function escapeHtml(value) {
+  return String(value).replace(/[&<>"']/g, (character) => ({
+    "&": "&amp;",
+    "<": "&lt;",
+    ">": "&gt;",
+    '"': "&quot;",
+    "'": "&#39;",
+  }[character]));
+}
+
+async function authFetch(url, options = {}) {
+  const headers = {
+    ...(options.headers || {}),
+    Authorization: `Bearer ${authToken}`,
+  };
+
+  const response = await fetch(url, {
+    ...options,
+    headers,
+  });
+
+  if (response.status === 401) {
+    clearAuthState("Please log in again.");
+  }
+
+  return response;
+}
 
 async function loadClaims() {
   const bounds = map.getBounds();
@@ -85,7 +184,12 @@ async function loadClaims() {
 }
 
 async function loadSavedSites() {
-  const response = await fetch(`/api/users/${currentUserId}/sites`);
+  if (!currentUserId || !authToken) {
+    clearAuthState();
+    return;
+  }
+
+  const response = await authFetch(`/api/users/${currentUserId}/sites`);
 
   if (!response.ok) {
     console.error("Could not load saved prospecting sites");
@@ -107,7 +211,7 @@ async function loadSavedSites() {
   } else {
     siteSelect.innerHTML = [
       '<option value="">Jump to saved site...</option>',
-      ...prospectingSites.map((site) => `<option value="${site.id}">${site.name}</option>`),
+      ...prospectingSites.map((site) => `<option value="${site.id}">${escapeHtml(site.name)}</option>`),
     ].join("");
   }
 
@@ -116,7 +220,7 @@ async function loadSavedSites() {
   } else {
     claimSelect.innerHTML = [
       '<option value="">Jump to saved claim...</option>',
-      ...miningClaims.map((site) => `<option value="${site.id}">${site.name}</option>`),
+      ...miningClaims.map((site) => `<option value="${site.id}">${escapeHtml(site.name)}</option>`),
     ].join("");
   }
 
@@ -143,8 +247,8 @@ function isMiningClaim(site) {
 
 function bindSitePopup(layer, site) {
   layer.bindPopup(`
-    <b>${site.name}</b>
-    ${site.notes ? `<br>${site.notes}` : ""}
+    <b>${escapeHtml(site.name)}</b>
+    ${site.notes ? `<br>${escapeHtml(site.notes)}` : ""}
   `);
 }
 
@@ -207,6 +311,11 @@ function focusSavedSite(siteId) {
 }
 
 async function saveMiningClaim(feature) {
+  if (!currentUserId) {
+    alert("Log in before saving a mining claim.");
+    return;
+  }
+
   const props = feature.properties || {};
   const name = props.CSE_NAME || "Mining claim";
   const notes = [
@@ -216,7 +325,7 @@ async function saveMiningClaim(feature) {
     `Type: ${props.CSE_TYPE_NR || "N/A"}`,
   ].join("\n");
 
-  const response = await fetch(`/api/users/${currentUserId}/sites`, {
+  const response = await authFetch(`/api/users/${currentUserId}/sites`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -283,32 +392,23 @@ function removeSitesFromDropdown(siteIds) {
 }
 
 async function loadUsers() {
-  const response = await fetch("/api/users");
+  if (!authToken) {
+    clearAuthState();
+    return;
+  }
+
+  const response = await authFetch("/api/auth/me");
 
   if (!response.ok) {
-    console.error("Could not load users");
-    userSelect.innerHTML = '<option value="">Could not load profiles</option>';
+    clearAuthState("Please log in again.");
     return;
   }
 
-  const users = await response.json();
-
-  if (!users.length) {
-    userSelect.innerHTML = '<option value="">No profiles found</option>';
-    return;
-  }
-
-  userSelect.innerHTML = users
-    .map((user) => {
-      const selected = user.id === currentUserId ? " selected" : "";
-      return `<option value="${user.id}"${selected}>${user.name}</option>`;
-    })
-    .join("");
-
-  if (!users.some((user) => user.id === currentUserId)) {
-    currentUserId = users[0].id;
-    userSelect.value = String(currentUserId);
-  }
+  const payload = await response.json();
+  currentUser = payload.user;
+  currentUserId = currentUser.id;
+  localStorage.setItem("goldDiggersUser", JSON.stringify(currentUser));
+  renderAuthState();
 
   await loadSavedSites();
 }
@@ -318,6 +418,11 @@ function addClaimPopup(feature, layer) {
 }
 
 map.on(L.Draw.Event.CREATED, async function (event) {
+  if (!currentUserId) {
+    alert("Log in before saving a prospecting site.");
+    return;
+  }
+
   const layer = event.layer;
   const name = prompt("Name this prospecting site:");
 
@@ -331,7 +436,7 @@ map.on(L.Draw.Event.CREATED, async function (event) {
 
   drawnItems.addLayer(layer);
 
-  const response = await fetch(`/api/users/${currentUserId}/sites`, {
+  const response = await authFetch(`/api/users/${currentUserId}/sites`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -352,12 +457,55 @@ map.on(L.Draw.Event.CREATED, async function (event) {
   await loadSavedSites();
 });
 
-userSelect.addEventListener("change", async function () {
-  currentUserId = Number(userSelect.value);
-  drawnItems.clearLayers();
-  siteSelect.innerHTML = '<option value="">Loading sites...</option>';
-  claimSelect.innerHTML = '<option value="">Loading claims...</option>';
-  await loadSavedSites();
+loginTab.addEventListener("click", () => setAuthMode("login"));
+signupTab.addEventListener("click", () => setAuthMode("signup"));
+
+authPanel.addEventListener("submit", async function (event) {
+  event.preventDefault();
+  authError.textContent = "";
+  authSubmit.disabled = true;
+
+  const endpoint = authMode === "signup" ? "/api/auth/signup" : "/api/auth/login";
+  const payload = {
+    email: emailInput.value,
+    password: passwordInput.value,
+  };
+
+  if (authMode === "signup") {
+    payload.name = nameInput.value;
+  }
+
+  try {
+    const response = await fetch(endpoint, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(payload),
+    });
+    const data = await response.json();
+
+    if (!response.ok) {
+      authError.textContent = data.error || "Authentication failed";
+      return;
+    }
+
+    setAuthState(data);
+    passwordInput.value = "";
+    await loadSavedSites();
+  } catch (error) {
+    authError.textContent = "Could not reach the server.";
+  } finally {
+    authSubmit.disabled = false;
+  }
+});
+
+logoutButton.addEventListener("click", async function () {
+  if (authToken) {
+    await authFetch("/api/auth/logout", { method: "POST" });
+  }
+
+  clearAuthState();
 });
 
 siteSelect.addEventListener("change", function () {
@@ -389,7 +537,7 @@ map.on(L.Draw.Event.DELETED, async function (event) {
 
   const results = await Promise.all(
     Array.from(siteIds).map((siteId) =>
-      fetch(`/api/sites/${siteId}`, {
+      authFetch(`/api/sites/${siteId}`, {
         method: "DELETE",
       })
     )
@@ -414,7 +562,7 @@ map.on(L.Draw.Event.EDITED, async function (event) {
     }
 
     updates.push(
-      fetch(`/api/sites/${layer.savedSiteId}`, {
+      authFetch(`/api/sites/${layer.savedSiteId}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",

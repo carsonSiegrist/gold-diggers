@@ -47,6 +47,101 @@
       z-index: 500;
     }
 
+    .auth-panel {
+      background: white;
+      box-shadow: 0 2px 14px rgb(0 0 0 / 24%);
+      color: #111827;
+      font: 14px Arial, sans-serif;
+      left: 50%;
+      max-width: calc(100% - 32px);
+      padding: 14px;
+      position: absolute;
+      top: 16px;
+      transform: translateX(-50%);
+      width: 320px;
+      z-index: 800;
+    }
+
+    .auth-panel[hidden],
+    .account-panel[hidden] {
+      display: none;
+    }
+
+    .auth-tabs {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      margin-bottom: 12px;
+    }
+
+    .auth-tabs button,
+    .auth-panel button,
+    .account-panel button {
+      background: #111827;
+      border: 1px solid #111827;
+      color: white;
+      cursor: pointer;
+      font: inherit;
+      padding: 7px 10px;
+    }
+
+    .auth-tabs button {
+      background: white;
+      color: #111827;
+    }
+
+    .auth-tabs button.active {
+      background: #111827;
+      color: white;
+    }
+
+    .auth-panel label {
+      display: block;
+      font-size: 12px;
+      margin: 8px 0 4px;
+    }
+
+    .auth-panel input {
+      border: 1px solid #d1d5db;
+      box-sizing: border-box;
+      color: #111827;
+      font: inherit;
+      padding: 7px 8px;
+      width: 100%;
+    }
+
+    .auth-panel .submit-row {
+      display: flex;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .auth-panel .submit-row button {
+      flex: 1;
+    }
+
+    .auth-error {
+      color: #b91c1c;
+      min-height: 18px;
+      margin: 8px 0 0;
+    }
+
+    .account-panel {
+      background: white;
+      box-shadow: 0 2px 8px rgb(0 0 0 / 20%);
+      color: #111827;
+      font: 14px Arial, sans-serif;
+      padding: 8px 10px;
+      position: absolute;
+      right: 16px;
+      top: 16px;
+      z-index: 500;
+    }
+
+    .account-panel strong {
+      display: block;
+      margin-bottom: 6px;
+    }
+
     .site-picker {
       background: white;
       box-shadow: 0 2px 8px rgb(0 0 0 / 20%);
@@ -55,7 +150,7 @@
       padding: 8px 10px;
       position: absolute;
       right: 16px;
-      top: 82px;
+      top: 90px;
       z-index: 500;
     }
 
@@ -67,7 +162,7 @@
       padding: 8px 10px;
       position: absolute;
       right: 16px;
-      top: 148px;
+      top: 156px;
       z-index: 500;
     }
 
@@ -109,11 +204,27 @@
 
 <body>
   <div id="map"></div>
-  <div class="profile-picker">
-    <label for="userSelect">Profile</label>
-    <select id="userSelect">
-      <option value="">Loading profiles...</option>
-    </select>
+  <form id="authPanel" class="auth-panel">
+    <div class="auth-tabs">
+      <button type="button" id="loginTab" class="active">Log in</button>
+      <button type="button" id="signupTab">Sign up</button>
+    </div>
+    <div id="nameField" hidden>
+      <label for="nameInput">Name</label>
+      <input id="nameInput" autocomplete="name" />
+    </div>
+    <label for="emailInput">Email</label>
+    <input id="emailInput" type="text" inputmode="email" autocomplete="email" required />
+    <label for="passwordInput">Password</label>
+    <input id="passwordInput" type="password" autocomplete="current-password" required />
+    <div class="submit-row">
+      <button id="authSubmit" type="submit">Log in</button>
+    </div>
+    <p id="authError" class="auth-error"></p>
+  </form>
+  <div id="accountPanel" class="account-panel" hidden>
+    <strong id="accountName">Signed in</strong>
+    <button id="logoutButton" type="button">Log out</button>
   </div>
   <div class="site-picker">
     <label for="siteSelect">Saved site</label>
