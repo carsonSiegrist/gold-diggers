@@ -11,28 +11,76 @@ const savedSiteStyle = {
   fillOpacity: 0.24,
 };
 
-const map = L.map("map", { zoomControl: false }).setView([32.3199, -106.7637], 10);
-
-L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+// base map definations
+const osmLayer = L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
   maxZoom: 19,
-}).addTo(map);
+  attribution: '© OpenStreetMap contributors'
+});
+
+const topoLayer = L.tileLayer('https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png', {
+  maxZoom: 17,
+  attribution: 'Map data: © OpenStreetMap contributors, SRTM | Map style: © OpenTopoMap (CC-BY-SA)'
+});
+
+const baseMaps = {
+    "Street Map": osmLayer,
+    "Topography": topoLayer
+};
+
+const map = L.map("map", { 
+    zoomControl: false,
+    layers: [osmLayer] 
+}).setView([32.3199, -106.7637], 10);
+
+L.control.layers(baseMaps, null, { position: 'topleft' }).addTo(map);
+
+// map object color/style
+function getClaimStyle(feature, baseColor) {
+    // Grab the raw numeric code
+    const rawType = String(feature.properties.CASE_TYPE_TXT || feature.properties.CSE_TYPE_NR || "");
+
+    // 384201 = PLACER (Solid, thick border, darker fill)
+    if (rawType === "384201") {
+        return {
+            color: baseColor,
+            weight: 3,               
+            fillColor: baseColor,
+            fillOpacity: 0.4,        
+            dashArray: ""            
+        };
+    } 
+    // 384101 = LODE (Dashed border, lighter fill)
+    else if (rawType === "384101") {
+        return {
+            color: baseColor,
+            weight: 2,
+            fillColor: baseColor,
+            fillOpacity: 0.15,       
+            dashArray: "5, 5"        
+        };
+    }
+    // MILL SITES, TUNNEL SITES, or Missing Data (Dotted border, very light fill)
+    else {
+        return {
+            color: baseColor,
+            weight: 1,
+            fillColor: baseColor,
+            fillOpacity: 0.1,
+            dashArray: "2, 6"        
+        };
+    }
+}
 
 const openClaims = L.geoJSON(null, {
-  style: {
-    color: "#16a34a",
-    weight: 2,
-    fillColor: "#16a34a",
-    fillOpacity: 0.2,
+  style: function(feature) {
+      return getClaimStyle(feature, "#16a34a"); 
   },
   onEachFeature: addClaimPopup,
 }).addTo(map);
 
 const closedClaims = L.geoJSON(null, {
-  style: {
-    color: "#dc2626",
-    weight: 2,
-    fillColor: "#dc2626",
-    fillOpacity: 0.12,
+  style: function(feature) {
+      return getClaimStyle(feature, "#dc2626"); 
   },
   onEachFeature: addClaimPopup,
 }).addTo(map);
@@ -351,11 +399,26 @@ function createClaimPopupContent(feature) {
   const container = document.createElement("div");
   const saveButton = document.createElement("button");
 
+  const claimTypeCodes = {
+      "384101": "LODE CLAIM",
+      "384201": "PLACER CLAIM",
+      "384301": "TUNNEL SITE",
+      "384401": "MILL SITE"
+  };
+
+  const rawType = String(props.CASE_TYPE_TXT || props.CSE_TYPE_NR || "Unknown");
+
+  const claimType = claimTypeCodes[rawType] || `Unknown Code: ${rawType}`;
+
   container.innerHTML = `
-    <b>${props.CSE_NAME || "Mining claim"}</b><br>
-    Case: ${props.CSE_NR || "N/A"}<br>
-    Status: ${props.CSE_DISP || "N/A"}<br>
-    Acres: ${props.RCRD_ACRS || "N/A"}<br><br>
+    <div style="font-family: sans-serif; min-width: 150px;">
+        <h4 style="margin: 0 0 8px 0; border-bottom: 1px solid #ccc; padding-bottom: 4px;">Claim Details</h4>
+        <b>Type:</b> <span style="color: #0369a1; font-weight: bold;">${claimType}</span><br>
+        <b>Name:</b> ${props.CSE_NAME || "Mining claim"}<br>
+        <b>Case:</b> ${props.CSE_NR || "N/A"}<br>
+        <b>Status:</b> ${props.CSE_DISP || "N/A"}<br>
+        <b>Acres:</b> ${props.RCRD_ACRS || "N/A"}<br><br>
+    </div>
   `;
 
   saveButton.type = "button";
